@@ -29,17 +29,17 @@ void unosNovogClana(RACUN*, RACUN*);
 //-----------------------------------------------------------------------------
 
 int brojanjeRacuna(RACUN*);
-RACUN* ucitavanjeListe(RACUN*);
+RACUN* ucitavanjeListe(RACUN*); //ima greska
 RACUN* upitZaIzradu(RACUN*);
 RACUN* izradaListe(void);
 RACUN* ubacivanjeNovogRacuna(RACUN*);
 void ispisivanjeListe(RACUN*, int);
 RACUN* pretrazivanjeListe(RACUN*, int);
-RACUN* modificiranjeOdredjenogRacuna(RACUN**, RACUN*);
+RACUN* modificiranjeOdredjenogRacuna(RACUN**, RACUN*); //ima greska
 void brisanjeOdredjenogRacuna(RACUN**, RACUN*);
 void printanjeOdredjenogRacuna(RACUN**, RACUN*);
 RACUN* oslobadjanjeCijeleListe(RACUN*);
-void bubbleSort(RACUN*);
+void bubbleSort(RACUN*); //ima greska
 void swap(RACUN*, RACUN*);
 void spremanjeListe(RACUN*);
 int krajPrograma(RACUN*);
