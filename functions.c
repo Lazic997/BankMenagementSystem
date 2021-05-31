@@ -205,7 +205,7 @@ void bubbleSort(RACUN* glavaRacuna)
 		tempGlava = pGlava;
 		while (tempGlava->nextRacun != NULL)//travel till the second last element 
 		{
-			if (tempGlava->ime[0] > tempGlava->nextRacun->ime[0] && tempGlava->ime[1] > tempGlava->nextRacun->ime[1])// compare the data of the nodes 
+			if (tempGlava->ime[0] > tempGlava->nextRacun->ime[0])// compare the data of the nodes 
 			{
 				swap(tempGlava, tempGlava->nextRacun);
 			}
