@@ -291,6 +291,7 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 	int pV = 1;
 	float uplata;
 	float isplata;
+	float novoStanje;
 	if (trazenaGlava == NULL) {
 		printf("\n\tTRAZENI RACUN NIJE PRONADJEN!\n\t");
 		getchar();
@@ -310,15 +311,20 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 			switch (pV) {
 			case 1:
 				system("cls");
+				columnNames();
+				printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 				printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE UPLATITI NA RACUN\n\t");
-				scanf("%d", &uplata);
+
+				scanf("%f", &uplata);
 				trazenaGlava->stanje += uplata;
 
 				break;
 			case 2:
 				system("cls");
+				columnNames();
+				printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 				printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE ISPLATITI S RACUNA\n\t");
-				scanf("%d", &isplata);
+				scanf("%f", &isplata);
 				trazenaGlava->stanje -= isplata;
 
 				break;
@@ -337,7 +343,7 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 		while (prijelaznaGlava->nextRacun) {
 			prijelaznaGlava = prijelaznaGlava->nextRacun;
 
-			if (prijelaznaGlava = trazenaGlava) {
+			if (prijelaznaGlava == trazenaGlava) {
 
 				columnNames();
 				printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
@@ -350,17 +356,20 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 					switch (pV) {
 					case 1:
 						system("cls");
+						columnNames();
+						printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 						printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE UPLATITI NA RACUN\n\t");
-						scanf("%d", &uplata);
+						scanf("%f", &uplata);
 						trazenaGlava->stanje += uplata;
 
 						break;
 					case 2:
 						system("cls");
+						columnNames();
+						printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 						printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE ISPLATITI S RACUNA\n\t");
-						scanf("%d", &isplata);
+						scanf("%f", &isplata);
 						trazenaGlava->stanje -= isplata;
-
 						break;
 					case 3:
 						pV = 0;
