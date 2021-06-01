@@ -33,14 +33,14 @@ RACUN* ucitavanjeListe(RACUN*); //ima greska
 RACUN* upitZaIzradu(RACUN*);
 RACUN* izradaListe(void);
 RACUN* ubacivanjeNovogRacuna(RACUN*);
+void bubbleSort(RACUN*); //mozda ima greska
+void swap(RACUN*, RACUN*);
 void ispisivanjeListe(RACUN*, int);
 RACUN* pretrazivanjeListe(RACUN*, int);
-RACUN* modificiranjeOdredjenogRacuna(RACUN**, RACUN*); //ima greska
+RACUN* modificiranjeOdredjenogRacuna(RACUN**, RACUN*); //fali provjera ako je stanje na racunu 0
 void brisanjeOdredjenogRacuna(RACUN**, RACUN*);
 void printanjeOdredjenogRacuna(RACUN**, RACUN*);
 RACUN* oslobadjanjeCijeleListe(RACUN*);
-void bubbleSort(RACUN*); //ima greska
-void swap(RACUN*, RACUN*);
 void spremanjeListe(RACUN*);
 int krajPrograma(RACUN*);
 #endif
