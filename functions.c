@@ -114,7 +114,7 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) { // funkcija radi, ali ucitava pocet
 			//printf("\tPV%d\tPV%s\tPV%s\t\tPV%d\t\tPV%.2f\n", ucitanaGlava->id, ucitanaGlava->ime, ucitanaGlava->prezime, ucitanaGlava->broj_racuna, ucitanaGlava->stanje);
 			//getchar();
 			if (ucitanaGlava == NULL) {
-				continue;
+				break;
 			}
 
 			else {
@@ -498,8 +498,10 @@ void spremanjeListe(RACUN* prijelaznaGlava) {
 	}
 
 	while (prijelaznaGlava) {
+
 		fwrite(prijelaznaGlava, sizeof(RACUN), 1, datoteka);
 		prijelaznaGlava = prijelaznaGlava->nextRacun;
+		
 	}
 }
 
