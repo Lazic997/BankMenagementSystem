@@ -111,8 +111,7 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) { // funkcija radi, ali ucitava pocet
 
 			RACUN* ucitanaGlava = (RACUN*)calloc(1, sizeof(RACUN));
 			fread(ucitanaGlava, sizeof(RACUN), 1, datoteka);
-			//printf("\tPV%d\tPV%s\tPV%s\t\tPV%d\t\tPV%.2f\n", ucitanaGlava->id, ucitanaGlava->ime, ucitanaGlava->prezime, ucitanaGlava->broj_racuna, ucitanaGlava->stanje);
-			//getchar();
+			
 			if (ucitanaGlava == NULL) {
 				break;
 			}
