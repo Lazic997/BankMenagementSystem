@@ -51,7 +51,7 @@ void izradaBaze() {
 void upitIzrade() {
 	printf("\n\n\t***********************************************************\n");
 	printf("\n\tLISTA RACUNA VEC POSTOJI!\n");
-	printf("\n\tDA LI STE SIGURNI DA ZELITE IZRADITI NOVU LISTU? da/ne\n");
+	printf("\n\tDA LI STE SIGURNI DA ZELITE IZRADITI NOVU LISTU? STARA LISTA CE SE OBRISATI! da/ne\n");
 	printf("\n\t***********************************************************\n\t");
 }
 
