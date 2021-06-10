@@ -103,7 +103,7 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) { // funkcija radi, ali ucitava pocet
 	int size = ftell(datoteka);
 	rewind(datoteka);
 
-	if (size == NULL) {
+	if (size == 0) {
 		return NULL;
 	}
 	else {
@@ -135,30 +135,30 @@ RACUN* upitZaIzradu(RACUN* glavaRacuna) {
 	system("cls");
 	upitIzrade();
 
-	char zavrsniOdabir[3] = { '\0' };
+	char zavrsniOdabir[10] = "";
 
 	do {
 		scanf("%s", zavrsniOdabir);
 
 
-		if (zavrsniOdabir[0] == 'd' && zavrsniOdabir[1] == 'a' && zavrsniOdabir[2] == '\0') {
+		if (strcmp(zavrsniOdabir, "da") == 0) {
 
 			glavaRacuna = NULL;
 			glavaRacuna = izradaListe();
 			return glavaRacuna;
 		}
-		else if (zavrsniOdabir[0] == 'n' && zavrsniOdabir[1] == 'e' && zavrsniOdabir[2] == '\0') {
+		else if (strcmp(zavrsniOdabir, "ne") == 0) {
 
 			printf("\n\tVRACANJE U MENI\n");
 			return glavaRacuna;
 
 		}
-		else if (zavrsniOdabir != 'da\0' || zavrsniOdabir != 'ne\0') {
+		else if (strcmp(zavrsniOdabir,"da") !=0 || strcmp(zavrsniOdabir, "ne") !=0) {
 			system("cls");
 			printf("\n\tPOGRESAN UNOS! UNESITE ODGOVOR PONOVNO!\n");
 			printf("\n\tDA LI STE SIGURNI DA ZELITE IZRADITI NOVU LISTU? da/ne\n\t");
 		}
-	} while (zavrsniOdabir != 'da\0' || zavrsniOdabir != 'ne\0');
+	} while (strcmp(zavrsniOdabir, "da") !=0 || strcmp(zavrsniOdabir, "ne") !=0);
 	return glavaRacuna;
 }
 
@@ -198,7 +198,7 @@ void bubbleSort(RACUN* glavaRacuna)
 {
 	RACUN* pGlava = NULL;
 	RACUN* tempGlava = NULL;
-	
+
 	pGlava = glavaRacuna; //temp node to hold node data and next link
 	while (pGlava != NULL)
 	{
@@ -219,21 +219,21 @@ void bubbleSort(RACUN* glavaRacuna)
 void swap(RACUN* a, RACUN* b)
 {
 
-	int tempId=0;
+	int tempId = 0;
 	char tempIme[20] = "";
 	char tempprezime[30] = "";
-	int tempbroj_racuna=0;
-	float tempstanje=0;
+	int tempbroj_racuna = 0;
+	float tempstanje = 0;
 
 	tempId = a->id;
-	strcpy(tempIme,a->ime);
+	strcpy(tempIme, a->ime);
 	strcpy(tempprezime, a->prezime);
 	tempbroj_racuna = a->broj_racuna;
 	tempstanje = a->stanje;
 
 	a->id = b->id;
-	strcpy(a->ime,b->ime);
-	strcpy(a->prezime,b->prezime);
+	strcpy(a->ime, b->ime);
+	strcpy(a->prezime, b->prezime);
 	a->broj_racuna = b->broj_racuna;
 	a->stanje = b->stanje;
 
@@ -324,14 +324,14 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 				columnNames();
 				printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 				printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE ISPLATITI S RACUNA\n\t");
-				
-					scanf("%f", &isplata);
 
-					if (trazenaGlava->stanje > 0) 
+				scanf("%f", &isplata);
+
+				if (trazenaGlava->stanje > 0)
 					trazenaGlava->stanje -= isplata;
-					else
+				else
 					printf("\n\tPOGRESAN UNOS ILI NEDOVOLJNO STANJE NA RACUNU!\n\t");
-				
+
 
 				break;
 			case 3:
@@ -374,13 +374,13 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 						columnNames();
 						printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 						printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE ISPLATITI S RACUNA\n\t");
-						
-							scanf("%f", &isplata);
-							if (trazenaGlava->stanje > 0)
-								trazenaGlava->stanje -= isplata;
-							else
-								printf("\n\tPOGRESAN UNOS ILI NEDOVOLJNO STANJE NA RACUNU!\n\t");
-						
+
+						scanf("%f", &isplata);
+						if (trazenaGlava->stanje > 0)
+							trazenaGlava->stanje -= isplata;
+						else
+							printf("\n\tPOGRESAN UNOS ILI NEDOVOLJNO STANJE NA RACUNU!\n\t");
+
 						break;
 					case 3:
 						pV = 0;
@@ -501,7 +501,7 @@ void spremanjeListe(RACUN* prijelaznaGlava) {
 
 		fwrite(prijelaznaGlava, sizeof(RACUN), 1, datoteka);
 		prijelaznaGlava = prijelaznaGlava->nextRacun;
-		
+
 	}
 }
 
@@ -510,13 +510,13 @@ int krajPrograma(RACUN* glavaRacuna) {
 	system("cls");
 	printf("\n\n\n\tDA LI STE SIGURNI DA ZELITE ZAVRSITI PROGRAM? da/ne\n\t");
 
-	char zavrsniOdabir[3] = { '\0' };
+	char zavrsniOdabir[10] = { '\0' };
 
 	do {
 		scanf("%s", zavrsniOdabir);
 
 
-		if (zavrsniOdabir[0] == 'd' && zavrsniOdabir[1] == 'a' && zavrsniOdabir[2] == '\0') {
+		if (strcmp(zavrsniOdabir, "da") == 0) {
 
 			spremanjeListe(glavaRacuna); //funkcija za spremanje liste u datoteku
 			glavaRacuna = oslobadjanjeCijeleListe(glavaRacuna);
@@ -524,7 +524,7 @@ int krajPrograma(RACUN* glavaRacuna) {
 			return 0;
 
 		}
-		else if (zavrsniOdabir[0] == 'n' && zavrsniOdabir[1] == 'e' && zavrsniOdabir[2] == '\0') {
+		else if (strcmp(zavrsniOdabir, "ne") == 0) {
 
 			spremanjeListe(glavaRacuna);
 			printf("\n\tVRACANJE U MENI\n");
@@ -532,11 +532,11 @@ int krajPrograma(RACUN* glavaRacuna) {
 			return 1;
 
 		}
-		else if (zavrsniOdabir != 'da\0' || zavrsniOdabir != 'ne\0') {
+		else if (strcmp(zavrsniOdabir, "da") != 0 || strcmp(zavrsniOdabir, "ne") != 0) {
 			system("cls");
 			printf("\n\tPOGRESAN UNOS! UNESITE ODGOVOR PONOVNO!\n");
 			printf("\n\tDA LI STE SIGURNI DA ZELITE ZAVRSITI PROGRAM? da/ne\n\t");
 		}
-	} while (zavrsniOdabir != 'da\0' || zavrsniOdabir != 'ne\0');
+	} while (strcmp(zavrsniOdabir, "da") != 0 || strcmp(zavrsniOdabir, "ne") != 0);
 	return 0;
 }
