@@ -29,15 +29,15 @@ void unosNovogClana(RACUN*, RACUN*);
 //-----------------------------------------------------------------------------
 
 int brojanjeRacuna(RACUN*);
-RACUN* ucitavanjeListe(RACUN*); //ima greska
+RACUN* ucitavanjeListe(RACUN*); //ima greska, ucitava novu 0
 RACUN* upitZaIzradu(RACUN*);
 RACUN* izradaListe(void);
 RACUN* ubacivanjeNovogRacuna(RACUN*);
-void bubbleSort(RACUN*); //mozda ima greska
+void bubbleSort(RACUN*);
 void swap(RACUN*, RACUN*);
 void ispisivanjeListe(RACUN*, int);
 RACUN* pretrazivanjeListe(RACUN*, int);
-RACUN* modificiranjeOdredjenogRacuna(RACUN**, RACUN*); //fali provjera ako je stanje na racunu 0
+RACUN* modificiranjeOdredjenogRacuna(RACUN**, RACUN*);
 void brisanjeOdredjenogRacuna(RACUN**, RACUN*);
 void printanjeOdredjenogRacuna(RACUN**, RACUN*);
 RACUN* oslobadjanjeCijeleListe(RACUN*);
