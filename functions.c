@@ -254,9 +254,8 @@ void ispisivanjeListe(RACUN* prijelaznaGlava) {
 	if (prijelaznaGlava == NULL) {
 		printf("\n\tLISTA RACUNA JE PRAZNA!\n\t");
 		getchar();
-		getchar();
-		return NULL;
 	}
+
 	else {
 
 		columnNames(); // funkcija za ispis zaglavlja
