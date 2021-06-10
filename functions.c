@@ -111,10 +111,10 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) { // funkcija radi, ali ucitava pocet
 
 			RACUN* ucitanaGlava = (RACUN*)calloc(1, sizeof(RACUN));
 			fread(ucitanaGlava, sizeof(RACUN), 1, datoteka);
-
+			//printf("\tPV%d\tPV%s\tPV%s\t\tPV%d\t\tPV%.2f\n", ucitanaGlava->id, ucitanaGlava->ime, ucitanaGlava->prezime, ucitanaGlava->broj_racuna, ucitanaGlava->stanje);
+			//getchar();
 			if (ucitanaGlava == NULL) {
-
-				glavaRacuna = NULL;
+				continue;
 			}
 
 			else {
@@ -196,10 +196,10 @@ RACUN* ubacivanjeNovogRacuna(RACUN* glavaRacuna) {
 
 void bubbleSort(RACUN* glavaRacuna)
 {
-	RACUN* pGlava = NULL, * tempGlava = NULL;
-	int tempvar;//temp variable to store node data
-	pGlava = glavaRacuna;
-	//temp = node;//temp node to hold node data and next link
+	RACUN* pGlava = NULL;
+	RACUN* tempGlava = NULL;
+	
+	pGlava = glavaRacuna; //temp node to hold node data and next link
 	while (pGlava != NULL)
 	{
 		tempGlava = pGlava;
@@ -219,27 +219,27 @@ void bubbleSort(RACUN* glavaRacuna)
 void swap(RACUN* a, RACUN* b)
 {
 
-	int tempId;
-	char tempIme;
-	char tempprezime;
-	int tempbroj_racuna;
-	float tempstanje;
+	int tempId=0;
+	char tempIme[20] = "";
+	char tempprezime[30] = "";
+	int tempbroj_racuna=0;
+	float tempstanje=0;
 
 	tempId = a->id;
-	tempIme = *(a->ime);
-	tempprezime = *(a->prezime);
+	strcpy(tempIme,a->ime);
+	strcpy(tempprezime, a->prezime);
 	tempbroj_racuna = a->broj_racuna;
 	tempstanje = a->stanje;
 
 	a->id = b->id;
-	*(a->ime) = *(b->ime);
-	*(a->prezime) = *(b->prezime);
+	strcpy(a->ime,b->ime);
+	strcpy(a->prezime,b->prezime);
 	a->broj_racuna = b->broj_racuna;
 	a->stanje = b->stanje;
 
 	b->id = tempId;
-	*(b->ime) = tempIme;
-	*(b->prezime) = tempprezime;
+	strcpy(b->ime, tempIme);
+	strcpy(b->prezime, tempprezime);
 	b->broj_racuna = tempbroj_racuna;
 	b->stanje = tempstanje;
 
@@ -324,8 +324,14 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 				columnNames();
 				printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 				printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE ISPLATITI S RACUNA\n\t");
-				scanf("%f", &isplata);
-				trazenaGlava->stanje -= isplata;
+				
+					scanf("%f", &isplata);
+
+					if (trazenaGlava->stanje > 0) 
+					trazenaGlava->stanje -= isplata;
+					else
+					printf("\n\tPOGRESAN UNOS ILI NEDOVOLJNO STANJE NA RACUNU!\n\t");
+				
 
 				break;
 			case 3:
@@ -368,8 +374,13 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 						columnNames();
 						printf("\t%d\t%s\t%s\t\t%d\t\t%.2f\n\n", trazenaGlava->id, trazenaGlava->ime, trazenaGlava->prezime, trazenaGlava->broj_racuna, trazenaGlava->stanje);
 						printf("\n\tUNESITE KOLICINU NOVCA KOJU ZELITE ISPLATITI S RACUNA\n\t");
-						scanf("%f", &isplata);
-						trazenaGlava->stanje -= isplata;
+						
+							scanf("%f", &isplata);
+							if (trazenaGlava->stanje > 0)
+								trazenaGlava->stanje -= isplata;
+							else
+								printf("\n\tPOGRESAN UNOS ILI NEDOVOLJNO STANJE NA RACUNU!\n\t");
+						
 						break;
 					case 3:
 						pV = 0;
