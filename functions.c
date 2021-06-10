@@ -63,7 +63,7 @@ void unosNoveListe(RACUN* glavaRacuna) {
 	scanf("%s", glavaRacuna->ime);
 	printf("\n\tUnesite prezime korisnika racuna:\n\t");
 	scanf("%s", glavaRacuna->prezime);
-	glavaRacuna->broj_racuna = 1000 + (float)rand() / RAND_MAX * (9999 - 1000); // IBAN ili broj racuna je nasumisno generiran broj :D
+	glavaRacuna->broj_racuna = 1000 + (int)rand() / RAND_MAX * (9999 - 1000); // IBAN ili broj racuna je nasumisno generiran broj :D
 	glavaRacuna->stanje = 0;
 	glavaRacuna->nextRacun = NULL;
 }
@@ -76,7 +76,7 @@ void unosNovogClana(RACUN* novaGlavaRacuna, RACUN* glavaRacuna) {
 	scanf("%s", novaGlavaRacuna->ime);
 	printf("\n\tUnesite prezime korisnika racuna:\n\t");
 	scanf("%s", novaGlavaRacuna->prezime);
-	novaGlavaRacuna->broj_racuna = 1000 + (float)rand() / RAND_MAX * (9999 - 1000); // IBAN ili broj racuna je nasumisno generiran broj
+	novaGlavaRacuna->broj_racuna = 1000 + (int)rand() / RAND_MAX * (9999 - 1000); // IBAN ili broj racuna je nasumisno generiran broj
 	novaGlavaRacuna->stanje = 0; //pocetno stanje na racunu je 0
 	novaGlavaRacuna->nextRacun = glavaRacuna;
 }
@@ -290,7 +290,7 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 	int pV = 1;
 	float uplata;
 	float isplata;
-	float novoStanje;
+
 	if (trazenaGlava == NULL) {
 		printf("\n\tTRAZENI RACUN NIJE PRONADJEN!\n\t");
 		getchar();
