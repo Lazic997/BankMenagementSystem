@@ -103,6 +103,8 @@ int brojanjeRacuna(RACUN* prijelaznaGlava) {
 
 RACUN* ucitavanjeListe(RACUN* glavaRacuna) { 
 
+	int i;
+
 	datoteka = fopen("bazaRacuna.bin", "rb");
 	if (datoteka == NULL) {
 		system("cls");
@@ -110,7 +112,7 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) {
 		exit(EXIT_FAILURE);
 
 	}
-	glavaRacuna = NULL;
+	
 
 	fseek(datoteka, 0, SEEK_END);
 	int size = ftell(datoteka);
@@ -125,12 +127,10 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) {
 
 	else {
 
-		int i;
-
 		for (i = 0;i < brojRacuna;i++) {
 			RACUN* ucitanaGlava = (RACUN*)calloc(1, sizeof(RACUN)); 
 			if (ucitanaGlava == 0) {
-				perror("Ucitavanje");
+				perror("Zauzimanje memorije");
 				return NULL;
 			}
 
