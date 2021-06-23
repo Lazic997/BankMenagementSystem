@@ -5,7 +5,6 @@
 #include <string.h>
 #include <time.h>
 #include <string.h>
-static int brojRacuna = 0;
 
 typedef struct racun {
 
