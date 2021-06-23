@@ -5,6 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include <string.h>
+static int brojRacuna = 0;
 
 typedef struct racun {
 
@@ -29,13 +30,13 @@ void unosNovogClana(RACUN*, RACUN*);
 //-----------------------------------------------------------------------------
 
 int brojanjeRacuna(RACUN*);
-RACUN* ucitavanjeListe(RACUN*); //ima greska, ucitava novu 0
+RACUN* ucitavanjeListe(RACUN*);
 RACUN* upitZaIzradu(RACUN*);
 RACUN* izradaListe(void);
 RACUN* ubacivanjeNovogRacuna(RACUN*);
 void bubbleSort(RACUN*);
 void swap(RACUN*, RACUN*);
-void ispisivanjeListe(RACUN*, int);
+void ispisivanjeListe(RACUN*);
 RACUN* pretrazivanjeListe(RACUN*, int);
 RACUN* modificiranjeOdredjenogRacuna(RACUN**, RACUN*);
 void brisanjeOdredjenogRacuna(RACUN**, RACUN*);
