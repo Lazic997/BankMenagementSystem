@@ -509,6 +509,8 @@ void spremanjeListe(RACUN* prijelaznaGlava) {
 		prijelaznaGlava = prijelaznaGlava->nextRacun;
 
 	}
+	
+	fclose(datoteka);
 }
 
 int krajPrograma(RACUN* glavaRacuna) {
