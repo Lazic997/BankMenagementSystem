@@ -87,19 +87,8 @@ void unosNovogClana(RACUN* novaGlavaRacuna, RACUN* glavaRacuna) {
 }
 
 
-
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-int brojanjeRacuna(RACUN* prijelaznaGlava) {
-	int brojac = 0;
-	while (prijelaznaGlava) {
-		brojac++;
-		prijelaznaGlava = prijelaznaGlava->nextRacun;
-	}
-
-	return brojac;
-}
 
 RACUN* ucitavanjeListe(RACUN* glavaRacuna) { 
 
@@ -119,12 +108,10 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) {
 	rewind(datoteka);
 
 	int brojRacuna = (int)(size / (sizeof(RACUN)));
-	printf("\n\tUCITANO RACUNA: %d", brojRacuna);
 
 	if (size == 0) {
 		glavaRacuna = NULL;
 	}
-
 	else {
 
 		for (i = 0;i < brojRacuna;i++) {
@@ -140,7 +127,6 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) {
 			}
 
 			else {
-
 				ucitanaGlava->nextRacun = glavaRacuna;
 				glavaRacuna = ucitanaGlava;
 			}
