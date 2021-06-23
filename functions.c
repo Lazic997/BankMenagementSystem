@@ -43,6 +43,11 @@ void izradaBaze() {
 	printf("\n\n\t***********************************************************\n");
 	printf("\n\tBAZA PODATAKA RACUNA NIJE POSTOJALA NA DISKU!\n");
 	datoteka = fopen("bazaRacuna.bin", "wb");
+	if (datoteka == NULL) {
+		perror("Kreiranje baze podataka.");
+		exit(EXIT_FAILURE);
+
+	}
 	fclose(datoteka);
 	printf("\n\tBAZA PODATAKA SADA JE KREIRANA, POKRENITE PROGRAM PONOVNO!\n");
 	printf("\n\t***********************************************************\n");
@@ -96,22 +101,40 @@ int brojanjeRacuna(RACUN* prijelaznaGlava) {
 	return brojac;
 }
 
+RACUN* ucitavanjeListe(RACUN* glavaRacuna) { 
 
-RACUN* ucitavanjeListe(RACUN* glavaRacuna) { // funkcija radi, ali ucitava pocetnu 0
+	datoteka = fopen("bazaRacuna.bin", "rb");
+	if (datoteka == NULL) {
+		system("cls");
+		izradaBaze();
+		exit(EXIT_FAILURE);
+
+	}
+	glavaRacuna = NULL;
 
 	fseek(datoteka, 0, SEEK_END);
 	int size = ftell(datoteka);
 	rewind(datoteka);
 
-	if (size == 0) {
-		return NULL;
-	}
-	else {
-		while (!feof(datoteka)) {
+	int brojRacuna = (int)(size / (sizeof(RACUN)));
+	printf("\n\tUCITANO RACUNA: %d", brojRacuna);
 
-			RACUN* ucitanaGlava = (RACUN*)calloc(1, sizeof(RACUN));
+	if (size == 0) {
+		glavaRacuna = NULL;
+	}
+
+	else {
+
+		int i;
+
+		for (i = 0;i < brojRacuna;i++) {
+			RACUN* ucitanaGlava = (RACUN*)calloc(1, sizeof(RACUN)); 
+			if (ucitanaGlava == 0) {
+				perror("Ucitavanje");
+				return NULL;
+			}
+
 			fread(ucitanaGlava, sizeof(RACUN), 1, datoteka);
-			
 			if (ucitanaGlava == NULL) {
 				break;
 			}
@@ -121,12 +144,14 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) { // funkcija radi, ali ucitava pocet
 				ucitanaGlava->nextRacun = glavaRacuna;
 				glavaRacuna = ucitanaGlava;
 			}
-
 		}
 
-		return glavaRacuna;
-
 	}
+
+	fclose(datoteka);
+	return glavaRacuna;
+
+		
 }
 
 RACUN* upitZaIzradu(RACUN* glavaRacuna) {
@@ -152,12 +177,12 @@ RACUN* upitZaIzradu(RACUN* glavaRacuna) {
 			return glavaRacuna;
 
 		}
-		else if (strcmp(zavrsniOdabir,"da") !=0 || strcmp(zavrsniOdabir, "ne") !=0) {
+		else if (strcmp(zavrsniOdabir, "da") != 0 || strcmp(zavrsniOdabir, "ne") != 0) {
 			system("cls");
 			printf("\n\tPOGRESAN UNOS! UNESITE ODGOVOR PONOVNO!\n");
 			printf("\n\tDA LI STE SIGURNI DA ZELITE IZRADITI NOVU LISTU? da/ne\n\t");
 		}
-	} while (strcmp(zavrsniOdabir, "da") !=0 || strcmp(zavrsniOdabir, "ne") !=0);
+	} while (strcmp(zavrsniOdabir, "da") != 0 || strcmp(zavrsniOdabir, "ne") != 0);
 	return glavaRacuna;
 }
 
@@ -485,12 +510,9 @@ RACUN* oslobadjanjeCijeleListe(RACUN* prijelaznaGlava) {
 
 void spremanjeListe(RACUN* prijelaznaGlava) {
 
-	fclose(datoteka); //prvo zatvaram datoteku za citanje
-
 	datoteka = fopen("bazaRacuna.bin", "wb"); //otvaram ju kao zapisivanje da bih prepisao prethodan sadrzaj
 	if (datoteka == NULL) {
-		system("cls");
-		izradaBaze();
+		perror("SPREMANJE!");
 		exit(EXIT_FAILURE);
 
 	}
@@ -518,7 +540,6 @@ int krajPrograma(RACUN* glavaRacuna) {
 
 			spremanjeListe(glavaRacuna); //funkcija za spremanje liste u datoteku
 			glavaRacuna = oslobadjanjeCijeleListe(glavaRacuna);
-			fclose(datoteka);
 			return 0;
 
 		}
