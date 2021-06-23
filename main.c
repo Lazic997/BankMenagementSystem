@@ -10,15 +10,7 @@ int main(void) {
 	uvodniEkran(); //funkcija za ispis dizajna uvodnog ekrana
 	getchar();
 
-	//----------------------------------//
-
-	datoteka = fopen("bazaRacuna.bin", "rb+");
-	if (datoteka == NULL) {
-		system("cls");
-		izradaBaze();
-		exit(EXIT_FAILURE);
-
-	}
+	//----------------------------------//	
 
 	int izbornik2;
 	RACUN* glavaRacuna = NULL;
@@ -34,8 +26,6 @@ int main(void) {
 		printf("\n\tLISTA RACUNA JE PRAZNA! KREIRAJTE NOVU!\n\t");
 		getchar();
 	}
-
-	int brojRacuna = brojanjeRacuna(glavaRacuna);
 
 	while (izbornik) {
 
@@ -62,7 +52,7 @@ int main(void) {
 			glavaRacuna = ubacivanjeNovogRacuna(glavaRacuna);
 			break;
 		case 3: // ispis svih racuna s liste
-			ispisivanjeListe(glavaRacuna, brojRacuna);
+			ispisivanjeListe(glavaRacuna);
 			break;
 		case 4:// modificiraj racun, kasnije cu napraviti
 			system("cls");
