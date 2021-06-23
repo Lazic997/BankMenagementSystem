@@ -28,7 +28,6 @@ void unosNovogClana(RACUN*, RACUN*);
 
 //-----------------------------------------------------------------------------
 
-int brojanjeRacuna(RACUN*);
 RACUN* ucitavanjeListe(RACUN*);
 RACUN* upitZaIzradu(RACUN*);
 RACUN* izradaListe(void);
