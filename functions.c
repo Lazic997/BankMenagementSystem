@@ -11,9 +11,11 @@ void uvodniEkran() {
 	printf("\n\n\n\t FERIT, Sveuciliste J. J. Strossmayera Osijek");
 }
 
-void mainMenu() {
+void mainMenu(RACUN* glavaRacuna) {
 	system("cls");
-
+	if (glavaRacuna == NULL) {
+		printf("\n\tLISTA RACUNA JE PRAZNA! KREIRAJTE NOVU!\n\t");
+	}
 	printf("\n\n\n\tMAIN MENU");
 	printf("\n\n\t01. STVORI LISTU RACUNA");
 	printf("\n\n\t02. OTVORI NOVI RACUN");
@@ -324,6 +326,7 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 
 				scanf("%f", &uplata);
 				trazenaGlava->stanje += uplata;
+				
 
 				break;
 			case 2:
@@ -334,7 +337,7 @@ RACUN* modificiranjeOdredjenogRacuna(RACUN** glavaRacuna, RACUN* trazenaGlava) {
 
 				scanf("%f", &isplata);
 
-				if (trazenaGlava->stanje > 0)
+				if (trazenaGlava->stanje > 0 && isplata < trazenaGlava->stanje) 
 					trazenaGlava->stanje -= isplata;
 				else
 					printf("\n\tPOGRESAN UNOS ILI NEDOVOLJNO STANJE NA RACUNU!\n\t");
