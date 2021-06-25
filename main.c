@@ -21,15 +21,10 @@ int main(void) {
 	int izbornik = 1;
 
 	glavaRacuna = ucitavanjeListe(glavaRacuna); //funkcija za ucitavanje stare liste iz datoteke
-	if (glavaRacuna == NULL) {
-		system("cls");
-		printf("\n\tLISTA RACUNA JE PRAZNA! KREIRAJTE NOVU!\n\t");
-		getchar();
-	}
-
+	
 	while (izbornik) {
-
-		mainMenu(); //funkcija za ispis dizajna mainmenu-a
+		
+		mainMenu(glavaRacuna); //funkcija za ispis dizajna mainmenu-a
 
 		scanf("%d", &izbornik2);
 
