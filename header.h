@@ -18,7 +18,7 @@ typedef struct racun {
 }RACUN;
 
 void uvodniEkran();
-void mainMenu();
+void mainMenu(RACUN*);
 void columnNames();
 void miniMenu();
 void izradaBaze();
