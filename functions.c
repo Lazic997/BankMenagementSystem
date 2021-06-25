@@ -42,14 +42,13 @@ void miniMenu() {
 void izradaBaze() {
 	printf("\n\n\t***********************************************************\n");
 	printf("\n\tBAZA PODATAKA RACUNA NIJE POSTOJALA NA DISKU!\n");
-	datoteka = fopen("bazaRacuna.bin", "wb");
+	datoteka = fopen("bazaRacuna.bin", "wb+");
 	if (datoteka == NULL) {
 		perror("Kreiranje baze podataka.");
 		exit(EXIT_FAILURE);
 
 	}
-	fclose(datoteka);
-	printf("\n\tBAZA PODATAKA SADA JE KREIRANA, POKRENITE PROGRAM PONOVNO!\n");
+	printf("\n\tBAZA PODATAKA SADA JE KREIRANA!\n");
 	printf("\n\t***********************************************************\n");
 }
 
@@ -98,8 +97,7 @@ RACUN* ucitavanjeListe(RACUN* glavaRacuna) {
 	if (datoteka == NULL) {
 		system("cls");
 		izradaBaze();
-		exit(EXIT_FAILURE);
-
+		getchar();
 	}
 	
 
@@ -509,7 +507,7 @@ void spremanjeListe(RACUN* prijelaznaGlava) {
 		prijelaznaGlava = prijelaznaGlava->nextRacun;
 
 	}
-	
+
 	fclose(datoteka);
 }
 
