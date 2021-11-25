@@ -49,7 +49,7 @@ int main(void) {
 		case 3: // ispis svih racuna s liste
 			ispisivanjeListe(glavaRacuna);
 			break;
-		case 4:// modificiraj racun, kasnije cu napraviti
+		case 4:// modificiraj racun
 			system("cls");
 
 			printf("\n\tZA MODIFICIRANJE RACUNA, UNESITE BROJ RACUNA:\n\t");
